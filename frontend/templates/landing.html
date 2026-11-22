@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+        <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <script src="https://cdn.jsdelivr.net/npm/theme-change@latest/index.js"></script>
+        <title>Tværagerhus</title>
+    </head>
+    <body>
+        <section
+        class="hero h-[70dvh]"
+        style="background-image: url('/static/images/aerial-shot.jpg'); background-attachment: fixed;"
+        >
+        <div class="hero-overlay"></div>
+            <div class="hero-content text-neutral-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-6xl font-bold font-(family-name: --font-grotesk)">Tværagerhus</h1>
+                    <p class="mb-5">
+                        - Siden 1955
+                    </p>
+                    {% if user.is_authenticated %}
+                    <meta http-equiv="REFRESH" content="0;url=/home">
+                    {% else %}
+                    <div class="flex flex-row justify-center gap-4">
+                        <a href="{% url 'login' %}">
+                            <button class="px-4 py-2 rounded-lg shadow-lg font-bold bg-amber-400 text-white border-none cursor-pointer transition delay-50 duration-300 ease-in-out hover:scale-110">Log ind</button>
+                        </a>
+                        <a href="{% url 'register' %}">
+                            <button class="px-4 py-2 rounded-lg shadow-lg font-bold bg-amber-400 text-white border-none cursor-pointer transition delay-50 duration-300 ease-in-out hover:scale-110">Opret konto</button>
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <section class="w-full text-center py-16">
+            <div class="text-neutral-500 italic">
+                <p> "Multae manus onus levius reddunt"</p>
+            </div>
+        </section>
+        <section class="flex flex-col md:flex-row w-full pb-4">
+            <div class="flex-1 text-center w-full md:w-96 px-6">
+                <p class="pb-6 px-6">{% lorem 30 w %}</p>
+            </div>
+            <div class="flex-1 text-center w-full md:w-96 px-6">
+                <p class="pb-6 px-6">{% lorem 30 w %}</p>
+            </div>
+            <div class="flex-1 text-center w-full md:w-96 px-6">
+                <p class="pb-6 px-6">{% lorem 30 w %}</p>
+            </div>
+        </section>
+        <footer class="flex flex-col md:flex-row w-full bg-neutral text-neutral-content p-10 justify-center">
+            <nav class="flex flex-col text-center w-full md:w-96 justify-center p-4">
+                <p><i class="text-center fa-solid fa-location-dot"></i></p>
+                <p>Sofielundsvej 55-69,</p>
+                <p>2600 Glostrup,</p>
+                <p>Danmark.</p>
+            </nav>
+            <nav class="flex flex-col text-center w-full md:w-96 justify-center p-4">
+                <p><i class="text-center fa-solid fa-envelope"></i></p>
+                <a href="mailto:bestyrelsen@tvaeragerhus.dk"><p>bestyrelsen@tvaeragerhus.dk</p></a>
+            </nav>
+            <nav class="flex flex-col text-center w-full md:w-96 justify-center p-4">
+                <p><i class="text-center fa-solid fa-shield"></i></p>
+                <p>Privatlivspolitik</p>
+            </nav>
+        </footer>
+        <section class="w-full text-center bg-neutral text-neutral-content">
+            <p class="text-xs text-neutral-500">&copy Magnus Klink 2026 </p><a href="https://www.github.com/magnusklink/tvaeragerhus"><p class="text-xs text-neutral-500">https://www.github.com/magnusklink/tvaeragerhus</p></a>
+        </section>
+    </body>
+</html>

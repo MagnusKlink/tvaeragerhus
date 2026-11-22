@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="page-card">
+    <div class="flex justify-center w-full">
+    <ul class="list gap-2 m-2 p-2 w-full max-w-3xl">
+    <ul class="list bg-base-200 rounded-box shadow-md">
+    {% for user in accounts %} 
+        <li class="list-row">
+            <div class="avatar">
+                <div class="w-24 rounded-full">
+                    <img class="w-24 bg-amber-400" alt="Profile picture" src="{{ user.profile_pic.url }}"/>
+                </div>
+            </div>
+            <div>
+                <a href="{% url 'account' user.slug %}">
+                    <div class="font-bold">{{ user.first_name }} {{ user.last_name }}</div>
+                </a>
+                <div class="text-xs uppercase font-semibold opacity-60">{{ user.apartment.name }}</div>
+                {% if user.is_staff %}
+                <div class="text-xs uppercase font-semibold opacity-60">- Bestyrelsesmedlem</div>
+                {% endif %}
+                {% if user.is_superuser %}
+                <div class="text-xs uppercase font-semibold opacity-60">- System Administrator</div>
+                {% endif %}
+            </div>
+            <a href="">
+                <button class="btn btn-square btn-ghost">
+                    <i class="fa-solid fa-paper-plane text-current text-base"></i>
+                </button>
+            </a>
+            <a href="{% url 'account' slug=user.slug %}">
+                <button class="btn btn-square btn-ghost">
+                    <i class="fa-solid fa-user text-current text-base"></i>
+                </button>
+            </a>
+        </li>
+    {% endfor %} 
+    </ul> 
+</ul>
+</div>
+</section>
+{% endblock %}

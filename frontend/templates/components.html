@@ -1,0 +1,92 @@
+{% partialdef menu %}
+<div class="menu" id="menu">
+  <nav>
+    <div class="menu-toggle">
+      <input type="checkbox" name="" id="menu-toggle">
+      <label for="menu-toggle" class="menu-toggle-icon">
+          <i class="fa-solid fa-bars"></i>
+      </label>
+    </div>
+    <ul class="menu-nav">
+      <div class="nav-item">
+        <a href="{% url 'home' %}" class="menu-link">
+          <i class="fa-solid fa-house"></i>
+          <span class="menu-link-text">Hjem</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="{% url 'apartments' %}" class="menu-link">
+          <i class="fa-solid fa-building"></i>
+          <span class="menu-link-text">Lejligheder</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="{% url 'accounts_list' %}" class="menu-link">
+          <i class="fa-solid fa-users"></i>
+          <span class="menu-link-text">Beboere</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="{% url 'account' slug=user.slug %}" class="menu-link">
+          <i class="fa-solid fa-user"></i>
+          <span class="menu-link-text">Profil</span>
+        </a>
+      </div>
+    </ul>
+  </nav>
+</div>
+{% endpartialdef %}
+
+{% partialdef footer %}
+                <div>
+                    <p>&copy; 2026 Tvaeragerhus. All rights reserved.</p>
+                </div>
+{% endpartialdef %}
+
+{% partialdef sidebar %}
+<aside id="sidebar">
+  <input type="checkbox" name="" id="toggler">
+  <label for="toggler" class="toggle-btn">
+      <!-- Icon For Sidebar Toggle -->
+       <i class="fa-solid fa-bars"></i>
+  </label>
+  <ul class="sidebar-nav">
+    <div class="nav-item">
+      <a href="{% url 'home' %}" class="sidebar-link">
+        <i class="fa-solid fa-house"></i>
+        <span class="sidebar-link-text">Hjem</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="{% url 'apartments' %}" class="sidebar-link">
+        <i class="fa-solid fa-building"></i>
+        <span class="sidebar-link-text">Lejligheder</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="{% url 'accounts_list' %}" class="sidebar-link">
+        <i class="fa-solid fa-users"></i>
+        <span class="sidebar-link-text">Beboere</span>
+      </a>
+    </div>
+    <div class="nav-item">
+      <a href="{% url 'account' slug=user.slug %}" class="sidebar-link">
+        <i class="fa-solid fa-user"></i>
+        <span class="sidebar-link-text">Profil</span>
+      </a>
+    </div>
+  </ul>
+  <div class="sidebar-footer">
+    <div class="nav-item">
+      <form action="{% url 'logout' %}" method="post" ">
+        {% csrf_token %}
+        <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;" class="sidebar-link">
+          <i class="fa-solid fa-right-from-bracket"></i>
+           <span class="sidebar-link-text" style="font-size: 1rem; flex-direction: row; align-self: center;">Log ud</span>
+        </button>
+       
+      </form>
+    </div>
+  </div>
+</aside>
+{% endpartialdef %}

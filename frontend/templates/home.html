@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Hjem{% endblock %}
+
+{% block content %}
+<section class="text-center pt-4">
+    <h1>Velkommen!</h1>
+    <p>Til Tværagerhus' beboer-side!</p>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 p-4 gap-4 w-full">
+    <div class="bg-base-300 rounded-2xl shadow-md">
+        {% for post in recent_posts %}
+            <p>{{ post.title }}</p>
+        {% endfor %}
+    </div>
+    <div class="bg-base-300 rounded-2xl shadow-md">
+        {% for post in recent_posts %}
+            <p>{{ post.title }}</p>
+        {% endfor %}
+    </div>
+    <div class="bg-base-300 rounded-2xl shadow-md">
+        {% for post in recent_posts %}
+            <p>{{ post.title }}</p>
+        {% endfor %}
+    </div>
+    <div class="bg-base-300 rounded-2xl shadow-md">
+        {% for post in recent_posts %}
+            <p>{{ post.title }}</p>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+{% endblock %}

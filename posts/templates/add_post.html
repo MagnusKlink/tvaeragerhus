@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex justify-center">
+<ul class="list gap-2 m-2 p-2">
+    <div class="bg-base-200 rounded-box shadow-md">
+        <h1>Opret opslag..</h1>
+        <div class="flex flex-row p-2 gap-2">
+            <div class=""><a href="{% url 'account' slug=user.slug %}"><img class="size-10 rounded-box bg-amber-400" alt="Tailwind CSS list item" src="{{ user.profile_pic.url }}"/></a></div>
+            <div class="grid grid-cols-1">
+                <a href="{% url 'account' slug=user.slug %}"><strong>{{ user.first_name }} {{ user.last_name }}:</strong></a>
+                <div class="text-xs">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <button class="btn">Opret</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  <a href="{% url 'posts' %}" class="right">
+    <button class="btn"><i class="fa-solid fa-arrow-left text-current text-base"></i>Opslagstavle</button>
+  </a>
+</ul>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="flex justify-center w-full">
+<ul class="list gap-2 m-2 p-2 w-full max-w-3xl">
+  <div class="bg-base-200 rounded-box">
+    <li class="list-row">
+      <div>
+        <div class="text-2xl w-full">
+            {% if request.user == user %}
+            <h2>Din Profil</h2>
+            {% elif user.first_name|last == "s" %}
+            <h2>{{ user.first_name }}' Profil</h2>
+            {% else %}
+            <h2>{{ user.first_name }}'s Profil</h2>
+            {% endif %}
+        </div>
+      </div>
+      {% if request.user == user %}
+      <div class="flex justify-self-end">
+          <details class="dropdown dropdown-end">
+            <summary class="btn btn-sm btn-circle m-1"><i class="fa-solid fa-caret-down"></i></summary>
+            <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+              <li><a href="{% url 'account_update' user.slug %}">Redigér</a></li>
+              <li class="text-red-700"><a>Slet</a></li>
+            </ul>
+          </details>
+        </div>
+    {% endif %}
+    </li>
+    <div class="list-col-wrap text-xs max-w-3xl p-4">
+        <div class="current-avatar">
+            {% if user.profile_pic %}
+                <img src="{{ user.profile_pic.url }}" alt="Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+            {% else %}
+                <p>No profile picture set.</p>
+            {% endif %}
+        </div>
+        <ul>
+            <li><strong>Fornavn:</strong> {{ user.first_name }}</li>
+            <li><strong>Efternavn:</strong> {{ user.last_name }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Lejlighed:</strong> {{ user.apartment.name }}</li>
+            <li><strong>Medlem siden:</strong> {{ user.date_joined }}</li>
+        </ul>
+    </div>
+  </div>
+</ul>
+</section>
+
+{% endblock %}

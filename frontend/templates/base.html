@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="da" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ view.title }}{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <script src="https://cdn.jsdelivr.net/npm/theme-change@latest/index.js"></script>
+</head>
+<body>
+<div class="drawer lg:drawer-open">
+  <input id="my-drawer-4" type="checkbox" class="drawer-toggle inline" />
+  <div class="drawer-content">
+    <!-- Navbar -->
+    <nav class="navbar w-full bg-amber-400 sticky top-0 z-10">
+      <label for="my-drawer-4" aria-label="open sidebar" class="btn btn-square btn-ghost drawer-button">
+        <!-- Sidebar toggle icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linejoin="round" stroke-linecap="round" stroke-width="2" fill="none" stroke="currentColor" class="my-1.5 inline-block size-4"><path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path><path d="M9 4v16"></path><path d="M14 10l2 2l-2 2"></path></svg>
+      </label>
+      <div class="px-4 font-bold">{{ view.title }}</div>
+    </nav>
+    <!-- Page content here -->
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <div class="drawer-side is-drawer-close:overflow-visible">
+    <label for="my-drawer-4" aria-label="close sidebar" class="drawer-overlay"></label>
+    <div class="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
+      <!-- Sidebar content here -->
+      <ul class="menu w-full grow">
+        <div class="flex flex-row justify-between items-center pt-4 px-2">
+          <p class="font-sans text-xl font-semibold self-start is-drawer-close:hidden">Tværagerhus</p>
+          <input type="checkbox" value="dark" data-set-theme class="toggle theme-controller is-drawer-close:hidden"/>
+        </div>
+        <div class="divider is-drawer-close:hidden"></div>
+        <!-- List item -->
+        <li>
+          <a href="{% url 'home' %}">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Hjem">
+            <!-- Home icon -->
+            <i class="fa-solid fa-house text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Hjem</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'posts' %}">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Opslagstavle">
+            <i class="fa-solid fa-bullhorn text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Opslagstavle</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'accounts_list' %}">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Beboere">
+            <i class="fa-solid fa-people-group text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Beboere</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'apartments' %}">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Lejligheder">
+            <i class="fa-solid fa-building text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Lejligheder</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Filer">
+            <i class="fa-solid fa-folder text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Filer</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Kalender">
+            <i class="fa-solid fa-calendar text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Kalender</span>
+          </button>
+          </a>
+        </li>
+        <div class="divider is-drawer-close:hidden"></div>
+        <li>
+          <a href="">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Vaskeri">
+            <i class="fa-solid fa-jug-detergent text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Vaskeri</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Affald">
+            <i class="fa-solid fa-dumpster text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Affald</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Orangeri">
+            <i class="fa-solid fa-apple-whole text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Orangeri</span>
+          </button>
+          </a>
+        </li>
+        <div class="divider is-drawer-close:hidden"></div>
+        <!-- List item -->
+        <li>
+          <a href="">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Beskeder">
+            <i class="fa-solid fa-envelope text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Beskeder</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'account' slug=request.user.slug %}">
+          <button class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Profil">
+            <!-- Settings icon -->
+            <!-- <img src="{{ user.profile_pic.url }}" class="h-16 p-0 object-contain overflow-visible bg-amber-400 rounded-full"/> -->
+             <i class="fa-solid fa-circle-user text-current text-base"></i>
+            <span class="is-drawer-close:hidden">Profil</span>
+          </button>
+          </a>
+        </li>
+        <li>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Log ud">
+                <i class="fa-solid fa-right-from-bracket text-current text-base"></i>
+              <span class="is-drawer-close:hidden">Log ud</span>
+            </button>
+          </form>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

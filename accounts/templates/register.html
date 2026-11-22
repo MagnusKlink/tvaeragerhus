@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="{% static 'css/output.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        <script src="https://cdn.jsdelivr.net/npm/theme-change@latest/index.js"></script>
+        <title>Tværagerhus</title>
+    </head>
+    <body>
+        <section
+        class="hero bg-base-200 min-h-screen"
+        style="background-image: url('/static/images/aerial-shot.jpg'); background-attachment: fixed;"
+        >
+        <div class="hero-overlay"></div>
+            <div class="hero-content text-neutral-content text-center">
+                <div class="max-w-md">
+                    {% if user.is_authenticated %}
+                    <meta http-equiv="REFRESH" content="0;url=/home">
+                    {% else %}
+                    <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl text-base-content">
+                        <div class="card-body">
+                            <form method="post" class="fieldset text-left">
+                            {% csrf_token %}
+                            
+                            <!-- Renders the email (username field) and password fields -->
+                            
+                                {{ form.as_p }}
+                                <div><a href="{% url 'login' %}" class="link link-hover">Har du allered en bruger?</a></div>
+                                <button class="btn bg-amber-400 text-white mt-4" type="submit">Opret bruger</button>
+                            </form>
+                            <p class="text-center text-base-content">Mangler du en bruger? Tag fat i et bestyrelsesmedlem!</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

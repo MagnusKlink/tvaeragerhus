@@ -1,0 +1,22 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Django development files
+db.sqlite3
+
+# MacOS files
+.DS_Store
+
+# User files
+/media/profile_pics/
+
+# Environment Variables
+.env

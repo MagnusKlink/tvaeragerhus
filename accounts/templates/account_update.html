@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="flex justify-center w-full">
+<ul class="list gap-2 m-2 p-2 w-full max-w-3xl">
+  <div class="bg-base-200 rounded-box">
+    <li class="list-row">
+      <div>
+        <div class="text-2xl w-full">
+            {% if request.user == user %}
+            <h2>Din Profil</h2>
+            {% elif user.first_name|last == "s" %}
+            <h2>{{ user.first_name }}' Profil</h2>
+            {% else %}
+            <h2>{{ user.first_name }}'s Profil</h2>
+            {% endif %}
+        </div>
+      </div>
+    </li>
+    <div class="list-col-wrap text-xs max-w-3xl p-4">
+        <div class="current-avatar">
+            {% if user.profile_pic %}
+                <img src="{{ user.profile_pic.url }}" alt="Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover;">
+            {% else %}
+                <p>No profile picture set.</p>
+            {% endif %}
+        </div>
+        <!-- Edit Profile Form -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button class="btn btn-success m-2" type="submit">Save Changes</button>
+        </form>
+         <a class="pt-2" href="{% url 'account' user.slug %}">
+            <button class="btn btn-error m-2">Annullér</button>
+        </a>
+    </div>
+  </div>
+</ul>
+</section>
+{% endblock %}
